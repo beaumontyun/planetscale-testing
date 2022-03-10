@@ -1,5 +1,8 @@
 const { Prisma } = require('@prisma/client');
 
+// check schema references for "Prisma.Decimal" 
+// https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference
+
 const categories = [
   {
     name: 'Hats',

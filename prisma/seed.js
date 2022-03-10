@@ -6,15 +6,19 @@ const prisma = new PrismaClient();
 
 const load = async () => {
   try {
+    // delete categories
     await prisma.category.deleteMany();
     console.log('Deleted records in category table');
 
+    // delete products
     await prisma.product.deleteMany();
     console.log('Deleted records in product table');
 
+    // autoincrement stays consistent after deletion, so reset the ids to ensure it makes sense
     await prisma.$queryRaw`ALTER TABLE Product AUTO_INCREMENT = 1`;
     console.log('reset product auto increment to 1');
 
+    // autoincrement stays consistent after deletion, so reset the ids to ensure it makes sense
     await prisma.$queryRaw`ALTER TABLE Category AUTO_INCREMENT = 1`;
     console.log('reset category auto increment to 1');
 
