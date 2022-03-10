@@ -79,11 +79,11 @@ model VerificationToken {
 
 model Social {
   id        String   @id @default(cuid())
-  twitter   String
-  instagram String
-  facebook  String
-  linkedin  String
-  email     String
+  twitter   String?
+  instagram String?
+  facebook  String?
+  linkedin  String?
+  email     String?
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
