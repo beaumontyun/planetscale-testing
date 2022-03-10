@@ -1,6 +1,6 @@
 export default function ProfileInput() {
     return (
-      <>
+      <div>
         <div>
           <div className="md:grid md:grid-cols-3 md:gap-6">
             <div className="md:col-span-1">
@@ -385,7 +385,7 @@ export default function ProfileInput() {
             </div>
           </div>
         </div>
-      </>
+      </div>
     )
   }
   

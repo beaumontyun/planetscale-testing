@@ -23,7 +23,7 @@ const Navbar = () => {
                         session ? <>{session.user.name}</> : <>login</>
                     }</p>
                 </Link>
-                <Link href="/input">
+                <Link href="/userinput">
                     <p className='text-black hover:text-blue-700 cursor-pointer'>Input</p>
                 </Link>
             </div>
