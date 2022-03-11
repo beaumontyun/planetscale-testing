@@ -1,7 +1,7 @@
 import { getSession } from 'next-auth/react';
 import ProfileInput from '../components/ProfileInput'
 
-const userinput = () => {
+const userinput = ({session}) => {
     return ( 
         <div>
             <ProfileInput />

@@ -1,7 +1,7 @@
 import { getSession } from "next-auth/react";
 import prisma from "../../lib/prisma";
 
-async function createSocial(req, res) {
+async function createSubmission(req, res) {
     const session = await getSession({ req });
 
     // throw error if not logged in
@@ -12,31 +12,25 @@ async function createSocial(req, res) {
     const user = await prisma.user.findUnique({
         where: { email: session.user.email },
     });
-    
+
     // // throw error if no fields committed
     if (!req.body) {
         return res.status(500).json({ error: 'validation error' });
     }
 
     // POST
-    const post = await prisma.social.upsert({
-        // the 'where' input requires the field to be UNIQUE. Amend the schema if it throw's error 500.
+    const post = await prisma.submission.upsert({
         where: {
             userId: user.id,
         },
         update: {
-            twitter: req.body.twitter,
-            instagram: req.body.instagram,
-            facebook: req.body.facebook,
-            linkedin: req.body.linkedin,
+            description: req.body.description,
+            submission: req.body.submission
         },
         create: {
             userId: user.id,
-            twitter: req.body.twitter,
-            instagram: req.body.instagram,
-            facebook: req.body.facebook,
-            linkedin: req.body.linkedin,
-            email: user.email
+            description: req.body.description,
+            submission: req.body.submission
         },
     });
 
@@ -51,6 +45,6 @@ async function createSocial(req, res) {
 export default async function handler(req, res) {
     // commit
     if (req.method === 'POST') {
-        return createSocial(req, res)
+        return createSubmission(req, res)
     }
 }
