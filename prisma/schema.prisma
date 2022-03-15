@@ -92,7 +92,7 @@ model Social {
 model Competition {
   id          String   @id @default(cuid())
   description String?  @db.VarChar(255)
-  submission  Bytes    @db.MediumBlob
+  submission  String   @db.VarChar(255)
   userId      String   @unique
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt   DateTime @default(now())

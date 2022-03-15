@@ -13,7 +13,7 @@ async function createSocial(req, res) {
         where: { email: session.user.email },
     });
     
-    // // throw error if no fields committed
+    // throw error if no fields committed
     if (!req.body) {
         return res.status(500).json({ error: 'validation error' });
     }
